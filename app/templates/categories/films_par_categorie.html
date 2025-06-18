@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'categories/style.css' %}">
+
+</head>
+<body>
+<div class="card">
+<h2>Catégorie : {{ categorie.nom }}</h2>
+<p>{{ categorie.descriptif }}</p>
+
+<h3>Ajouter un film à cette catégorie :</h3>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit"><a class="a" href="/app/ajout-films">🎥 Ajouter un film</a></button>
+</form>
+
+<h3>Films dans cette catégorie :</h3>
+<ul>
+    {% for film in films %}
+        <li>
+            <strong>{{ film.titre }}</strong> ({{ film.annee }}) par {{ film.realisateur }}
+            <a class="b" href="/app/affiche-films/{{film.id}}/">🎬Afficher</a>
+            <a class="b" href="/app/update-films/{{film.id}}/">✏️Modifier</a>
+            <a class="b" href="/app/delete-films/{{film.id}}/">❌Supprimer</a>
+        </li>
+    {% empty %}
+        <li>Aucun film dans cette catégorie.</li>
+    {% endfor %}
+</ul>
+</br>
+<h3><a href="/app/index-categories/">⬅️ Retour aux catégories</a></h3>
+</div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'personnes/style.css' %}">
+
+</head>
+<body>
+<div class="card">
+    <h2>utilisateur {{personne.pseudo}}</h2>
+
+    <h3>Pseudo : {{personne.pseudo}}</h3>
+    <h3>Nom : {{personne.nom}}</h3>
+    <h3>Prénom : {{personne.prenom}}</h3>
+    <h3>E-mail : {{personne.mail}}</h3>
+    <h3>Mot de passe : {{personne.motdepasse}}</h3>
+    <h3>Type : {{personne.type}}</h3>
+    </br>
+    <h3><a class="a" href="/app/index-personnes">⬅️ Retour à la page précedente</a></h3>
+</div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'films/style.css' %}">
+
+</head>
+<body>
+<div class="card">
+<h1> Saisie d'un nouveau film</h1>
+    {% if id is not None %}
+        <form method="post" action="/app/updatetraitement-films/{{id}}/" enctype="multipart/form-data">
+    {% else %}
+        <form method="post" action="/app/traitement-films/" enctype="multipart/form-data">
+    {% endif %}
+    {% csrf_token %}
+    {{form.as_ul}}
+    <input type="submit" value="envoyez les données"/>
+</form>
+</div>
+</body>
+</html>

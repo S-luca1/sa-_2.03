@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'categories/style.css' %}">
+
+</head>
+<body>
+<div class="card">
+    <h1>Catégories de film</h1>
+    <a class="a" href="/app/ajout-categories">➕ Ajouter une catégorie</a>
+
+    <ul>
+        {% for c in liste %}
+            <li> {{c}}
+                <a class="b" href="/app/films_par_categories/{{c.id}}/">🎬 Films</a> /
+                <a class="b" href="/app/affiche-categories/{{c.id}}/">📃 Description </a> /
+                <a class="b" href="/app/update-categories/{{c.id}}/">✏️ Modifier </a> /
+                <a class="b" href="/app/delete-categories/{{c.id}}/">❌ Supprimer </a>
+                </br>
+                </br>
+            </li>
+        {% endfor %}
+    </ul>
+    </br>
+    <a class="a" href="/app/index-commentaires">⭐ Espace commentaires</a> /
+    <a class="a" href="/app/index-films">🎥 Voir l'ensemble des films</a> /
+    <a class="a" href="/app/index-personnes">🧍‍♂️Voir la liste des utilisateurs</a>
+</div>
+</body>
+</html>

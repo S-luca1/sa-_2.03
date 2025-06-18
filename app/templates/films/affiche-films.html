@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'films/style.css' %}">
+
+</head>
+<body>
+<div class="card">
+    <h2>Film - {{film.titre}}</h2>
+
+    {% if film.affiche %}
+        <img src="{{ film.affiche.url }}" height="100">
+    {% else %}
+        <p>Aucune image disponible</p>
+    {% endif %}
+
+    <h3>Titre : {{film.titre}}</h3>
+    <h3>Catégorie : {{film.categorie}}</h3>
+    <h3>Année de sortie : {{film.annee}}</h3>
+    <h3>Réalisateur : {{film.realisateur}}</h3>
+    <h3>Acteurs :</h3>
+    <ul>
+        {% for acteur in film.acteur.all %}
+            <li>{{ acteur.nom }} {{ acteur.prenom }}</li>
+        {% endfor %}
+    </ul>
+    </br>
+    <h3><a class="a" href="/app/index-films">Afficher la liste des films</a></h3>
+    <h3><a class="a" href="/app/films_par_categories/{{film.id}}/">Afficher la catégorie</a></h3>
+</div>
+</body>
+</html>

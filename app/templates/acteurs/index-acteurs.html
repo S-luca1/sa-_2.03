@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'acteurs/style.css' %}">
+
+</head>
+<body>
+<div class="card">
+    <h1>Liste des acteurs</h1>
+    <a class="a" href="/app/ajout-acteurs">Ajouter un acteur</a>
+
+    <ol>
+        {% for a in liste %}
+            <li> {{a}} <a class="b" href="/app/affiche-acteurs/{{a.id}}/">📃 Informations </a> /
+                <a class="b" href="/app/update-acteurs/{{a.id}}/">✏️ Modifier </a> /
+                <a class="b" href="/app/delete-acteurs/{{a.id}}/">❌  Supprimer </a>
+            </li>
+        {% endfor %}
+    </ol>
+    </br>
+    <h3><a class="a" href="/app/index-categories/">Retour aux catégories</a></h3>
+</div>
+</body>
+</html>

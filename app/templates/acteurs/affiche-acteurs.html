@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'acteurs/style.css' %}">
+</head>
+<body><div class="card">
+
+<h2>Acteur - {{acteur.prenom}} {{acteur.nom}}</h2>
+
+{% if acteur.photo %}
+    <td><img src="{{ acteur.photo.url }}" height="100"></td>
+{% else %}
+    <p>Aucune photo disponible</p>
+{% endif %}
+
+    <h3>Nom : {{acteur.nom}}</h3>
+    <h3>Prénom : {{acteur.prenom}}</h3>
+    <h3>Age : {{acteur.age}} ans</h3>
+    </br>
+    <h3><a class="a" href="/app/index-acteurs">⬅️ Retour à la page précedente</a></h3>
+</div>
+</body>
+</html>

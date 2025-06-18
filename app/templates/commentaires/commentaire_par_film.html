@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'commentaires/style.css' %}">
+
+</head>
+<body>
+<div class="card">
+    <h1>Commentaires pour {{ film.titre }}</h1>
+
+    {% if commentaires %}
+        <p>Moyenne des notes : {% if moyenne_notes %}{{ moyenne_notes|floatformat:"2" }}/20{% else %}Pas de moyenne disponible{% endif %}</p>
+
+        {% if meilleure_note %}
+        <ul>
+            <li>
+                <strong>Meilleure note : {{ meilleur_personne }} ({{ meilleure_note }}/20)</strong>
+                <p>{{ meilleure_commentaire.commentaire }}</p>
+                <p>Posté le {{ meilleure_commentaire.date }}</p>
+            </li>
+        </ul>
+        {% endif %}
+        {% if pire_note %}
+        <ul>
+            <li>
+                <strong>Pire note : {{ pire_personne }} ({{ pire_note }}/20)</strong>
+                <p>{{ pire_commentaire.commentaire }}</p>
+                <p>Posté le {{ pire_commentaire.date }}</p>
+            </li>
+        </ul>
+        {% endif %}
+
+        <ul>
+            {% for commentaire in commentaires %}
+                {% if commentaire != meilleure_commentaire and commentaire != pire_commentaire %}
+                    <li>
+                        <strong>{{ commentaire.personne.pseudo }} ({{ commentaire.note }}/20):</strong>
+                        <p>{{ commentaire.commentaire }}</p>
+                        <p>Posté le {{ commentaire.date }}</p>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Aucun commentaire pour ce film.</p>
+    {% endif %}
+    </br>
+    <h3><a class="a" href="/app/index-films">⬅️ Retour à la page précedente</a></h3>
+</div>
+</body>
+</html>

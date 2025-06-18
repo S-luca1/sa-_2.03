@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'personnes/style.css' %}">
+
+</head>
+<body>
+<div class="card">
+    <h1>Liste des utilisateurs</h1>
+    <a class="a" href="/app/ajout-personnes/">Ajouter un utilisateur</a>
+    <ol>
+        {% for u in liste %}
+            <li> {{u}} <a class="b" href="/app/affiche-personnes/{{u.id}}/"> Afficher </a> <a class="b" href="/app/update-personnes/{{u.id}}/"> Modifier </a> <a class="b" href="/app/delete-personnes/{{u.id}}/"> Supprimer </a> </li>
+        {% endfor %}
+    </ol>
+    </br>
+     <h3><a class="a" href="/app/index-categories">Retour aux catégories</a></h3>
+</div>
+</body>
+</html>

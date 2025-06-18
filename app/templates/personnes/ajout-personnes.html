@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'personnes/style.css' %}">
+
+</head>
+<body>
+<div class="card">
+    <h1> Saisie d'une nouvelle personne</h1>
+        {% if id is not None %}
+                <form method="post" action="/app/updatetraitement-personnes/{{id}}/">
+            {% else %}
+                <form method="post" action="/app/traitement-personnes/">
+            {% endif %}
+        {% csrf_token %}
+        {{form.as_ul}}
+        <input type="submit" value="envoyez les données"/>
+    </form>
+</div>
+</body>
+</html>

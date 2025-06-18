@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'categories/style.css' %}">
+
+</head>
+<body>
+<div class="card">
+    <h1> Saisie d'une nouvelle catégorie</h1>
+        {% if id is not None %}
+                <form method="post" action="/app/updatetraitement-categories/{{id}}/">
+            {% else %}
+                <form method="post" action="/app/traitement-categories/">
+            {% endif %}
+        {% csrf_token %}
+        {{form.as_ul}}
+        <input type="submit" value="envoyez les données"/>
+    </form>
+</div>
+</body>
+</html>

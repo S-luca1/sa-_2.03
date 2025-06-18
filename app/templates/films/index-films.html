@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'films/style.css' %}">
+
+</head>
+<body>
+<div class="card">
+    <h1>Liste des films</h1>
+    <button type="submit"><a class="a" href="/app/ajout-films">🎥 Ajouter un film</a></button>
+    <ol>
+        {% for f in liste %}
+            <li> {{f}}
+                <a class="b" href="/app/affiche-films/{{f.id}}/">📃 détails</a> /
+                <a class="b" href="/app/update-films/{{f.id}}/">✏️ Modifier</a> /
+                <a class="b" href="/app/delete-films/{{f.id}}/">❌ Supprimer</a> /
+                <a class="b" href="{% url 'commentaires-par-film' f.id %}">⭐ Voir les commentaires</a></li>
+        {% endfor %}
+    </ol>
+    </br>
+    <h3><a class="a" href="/app/index-acteurs">Voir les acteurs</a></h3>
+    <h3><a class="a" href="/app/index-categories">Retour aux catégories</a></h3>
+</div>
+</body>
+</html>

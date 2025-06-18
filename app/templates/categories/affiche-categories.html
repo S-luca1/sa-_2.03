@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'categories/style.css' %}">
+
+</head>
+<body>
+<div class="card">
+<h2>Catégorie {{categorie.nom}}</h2>
+
+<h3>Nom : {{categorie.nom}}</h3>
+<h3>Description : {{categorie.description}}</h3>
+    </br>
+    <h3><a class="a" href="/app/index-categories">⬅️ Retour à la page précedente</a></h3>
+</div>
+</body>
+</html>
